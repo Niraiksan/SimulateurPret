@@ -207,6 +207,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+
+
 function calculerEpargneInvestissement() {
     document.getElementById("solutions").style.display = "block";
     let montantObjectif = parseFloat(document.getElementById("montant").value);

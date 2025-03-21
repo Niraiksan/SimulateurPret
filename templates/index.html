@@ -110,7 +110,7 @@
                 <div ><button id="dwnldTable" class="btn btn-sm btn-success"><font size="2">Télécharger</font></button></div>
             </div>
             
-            <div class="table-responsive">
+            <div class="table-responsive mt-2">
                 <table class="table table-bordered table-striped" id="amortissementTable">
                     <thead>
                         <tr>
@@ -139,7 +139,7 @@
                 <button onclick="calculerEpargneInvestissement()" class="btn btn-sm btn-info"><font size="2">En savoir +</font></button>
             </div>
             
-            <div id="solutions" style="display: none;">
+            <div id="solutions"  class="mt-2" style="display: none;">
             <!-- <div id="solutions" class="mt-2"> -->
                 <div class="alert alert-info" role="alert">
                     <h5><font size="3">Épargne mensuelle nécessaire</font></h5>
@@ -180,6 +180,25 @@
         
     </div>
     
+    <script>
+        const header = document.querySelector("header");
+        const startFade = 100; // Position en pixels où commence la disparition
+        const endFade = 300; // Position en pixels où l'opacité devient 0
+    
+        window.addEventListener("scroll", function () {
+            let scrollY = window.scrollY;
+    
+            if (scrollY < startFade) {
+                header.style.opacity = "1"; // 100% visible
+            } else if (scrollY > endFade) {
+                header.style.opacity = "0"; // Complètement invisible
+            } else {
+                let opacity = 1 - (scrollY - startFade) / (endFade - startFade);
+                header.style.opacity = opacity;
+            }
+        });
+    </script>
+
     <script src="/static/js/app.js"></script>
 </body>
 </html>
