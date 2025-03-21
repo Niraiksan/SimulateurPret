@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulateur de Prêt</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -25,15 +26,15 @@
                     <form id="loan-form" class="row">
                         <div class="col-md-12">
                             <label class="form-label"><font size="2">Montant du prêt (€) :</font></label>
-                            <input type="number" id="montant" class="form-control" value="300000" min="1" required>
+                            <input type="number" id="montant" class="form-control" min="1" required>
                         </div>
                         <div class="col-md-12">
                             <label class="form-label"><font size="2">Taux d'intérêt annuel (%) :</font></label>
-                            <input type="number" id="taux_annuel" step="0.01" min="0" value="5" max="100" class="form-control" required>
+                            <input type="number" id="taux_annuel" step="0.01" min="0" max="100" class="form-control" required>
                         </div>
                         <div class="col-md-12">
                             <label class="form-label"><font size="2">Durée du prêt (années) :</font></label>
-                            <input type="number" id="duree_annees" min="1" value="4" class="form-control" required>
+                            <input type="number" id="duree_annees" min="1" class="form-control" required>
                         </div>
                         <div class="col-12 text-center mt-3">
                             <button type="submit" class="btn btn-sm" style="background-color: #0d6dfdc4;color: #ffffff;"><font size="2">Simuler</font></button>
@@ -109,62 +110,28 @@
                 <div ><button id="dwnldTable" class="btn btn-sm btn-success"><font size="2">Télécharger</font></button></div>
             </div>
             
-            <table class="table table-bordered table-striped" id="amortissementTable">
-                <thead>
-                    <tr>
-                        <th style="font-weight: normal;"><font size="2">Mois</font></th>
-                        <th style="font-weight: normal;"><font size="2">Mensualité</font></th>
-                        <th style="font-weight: normal;"><font size="2">Intérêts</font></th>
-                        <th style="font-weight: normal;"><font size="2">Capital remboursé</font></th>
-                        <th style="font-weight: normal;"><font size="2">Capital restant</font></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td colspan="5" class="text-center"><font size="2">Veuillez remplir le formulaire pour voir les résultats.</font></td></tr>
-                </tbody>
-            </table>
-            
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="amortissementTable">
+                    <thead>
+                        <tr>
+                            <th style="font-weight: normal;"><font size="2">Mois</font></th>
+                            <th style="font-weight: normal;"><font size="2">Mensualité</font></th>
+                            <th style="font-weight: normal;"><font size="2">Intérêts</font></th>
+                            <th style="font-weight: normal;"><font size="2">Capital remboursé</font></th>
+                            <th style="font-weight: normal;"><font size="2">Capital restant</font></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="5" class="text-center"><font size="2">Veuillez remplir le formulaire pour voir les résultats.</font></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="text-center">
                 <button id="seeMoreButton" class="btn btn-sm btn-secondary"><font size="2">Voir plus</font></button>
             </div>
         </div>
 
-        <!-- <div class="card shadow p-4 mb-4">
-            <h4 class="text-center"><font size="3">Alternatives à l’emprunt</font></h4>
-            <p class="text-center"><font size="2">Vous avez désormais une vision claire du coût de votre emprunt. Mais saviez-vous qu'il existe une <b>alternative pour atteindre vos objectifs financiers sans avoir à emprunter</b> ? Une option simple et efficace à considérer : épargner.</font></p>
-            <div class="text-center">
-                <button onclick="calculerEpargneInvestissement()" class="btn btn-info">En savoir +</button>
-            </div>
-            <div id="solutions" style="display: none;">
-                <h3>Épargne mensuelle nécessaire</h3>
-                <p>
-                    Si vous épargnez sans rendement, vous devrez mettre de côté <strong id="epargneMensuelle">...</strong> € chaque mois pendant 
-                    <select id="annee_emprunt">
-                        <option value="3">3 Ans</option>
-                        <option value="5" selected>5 Ans</option>
-                        <option value="7">7 Ans</option>
-                    </select>.
-                </p>
-        
-                <h3>Investissement avec rendement</h3>
-                <label for="tauxRendement">Taux de rendement annuel :</label>
-                <select id="tauxRendement">
-                    <option value="3">3% (faible risque)</option>
-                    <option value="5" selected>5% (équilibré)</option>
-                    <option value="7">7% (plus risqué)</option>
-                </select>
-        
-                <p>
-                    Avec un rendement de <strong id="tauxSelectionne">5%</strong>, vous devriez investir 
-                    <strong id="investMensuel">...</strong> € par mois pendant 
-                    <select id="annee_invest">
-                        <option value="3">3 Ans</option>
-                        <option value="5" selected>5 Ans</option>
-                        <option value="7">7 Ans</option>
-                    </select>.
-                </p>
-            </div>
-        </div> -->
         <div class="card shadow p-4 mb-4">
             <h4 class="text-center mb-3"><font size="3">Alternatives à l’emprunt</font></h4>
             <p class="text-center"><font size="2">Vous avez désormais une vision claire du coût de votre emprunt. Mais saviez-vous qu'il existe une <b>alternative pour atteindre vos objectifs financiers sans avoir à emprunter</b> ? Une option simple et efficace à considérer : épargner.</font></p>
