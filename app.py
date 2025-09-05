@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 import math
 
 app = Flask(__name__)
@@ -30,6 +30,12 @@ def generer_tableau_amortissement(montant, taux_annuel, duree_annees):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/google7eb007a178cf48e6.html')
+def google_verification():
+    return send_from_directory('static', 'google7eb007a178cf48e6.html')
+
 
 @app.route("/simulate-loan", methods=["POST"])
 def simulate_loan():
