@@ -41,6 +41,11 @@ def google_verification():
     return send_from_directory('static', 'google7eb007a178cf48e6.html')
 
 
+@app.route('/sitemap.xml')
+def google_verification():
+    return send_from_directory('static', 'sitemap.xml')
+
+
 @app.route("/simulate-loan", methods=["POST"])
 def simulate_loan():
     data = request.json
