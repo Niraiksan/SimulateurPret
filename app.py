@@ -42,7 +42,7 @@ def google_verification():
 
 
 @app.route('/sitemap.xml')
-def google_verification():
+def sitemap():
     return send_from_directory('static', 'sitemap.xml')
 
 
