@@ -31,6 +31,10 @@ def generer_tableau_amortissement(montant, taux_annuel, duree_annees):
 def index():
     return render_template('index.html')
 
+@app.route("/robots.txt")
+def robots():
+    return "User-agent: *\nAllow: /", 200, {"Content-Type": "text/plain"}
+
 
 @app.route('/google7eb007a178cf48e6.html')
 def google_verification():
